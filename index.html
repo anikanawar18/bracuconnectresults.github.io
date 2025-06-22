@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BracU Connect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e9f0f5;
+      margin: 0;
+      padding: 0;
+    }
+    .login-box, .main-content {
+      max-width: 960px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .input-group {
+      margin: 15px 0;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    h2 {
+      text-align: center;
+      color: #0066cc;
+    }
+    button.tab-btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #0066cc;
+      color: white;
+    }
+    .semester-row {
+      background-color: #eee;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .profile-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Login Page -->
+<div class="login-box" id="loginPage">
+  <div style="text-align: center;">
+    <img src="bracu-logo.png" alt="BRAC University Logo" style="width: 150px; margin-top: 20px;">
+    <h2>Login to BracU Connect</h2>
+  </div>
+
+  <div style="max-width: 400px; margin: auto;">
+    <label for="username"><strong>Username</strong></label>
+    <input type="text" id="username" placeholder="Enter your username">
+
+    <label for="password"><strong>Password</strong></label>
+    <input type="password" id="password" placeholder="Enter your password">
+
+    <button class="btn" onclick="validateLogin()">Login</button>
+
+    <p id="error" class="error"></p>
+  </div>
+</div>
+
+<!-- Main Page After Login -->
+<div id="mainPage" class="main-content hidden">
+  <h2>Welcome to BracU Connect</h2>
+  <div style="text-align: center;">
+    <button class="tab-btn" onclick="showSection('profile')">Profile</button>
+    <button class="tab-btn" onclick="showSection('result')">Results</button>
+  </div>
+
+  <!-- Profile Section -->
+  <div id="profile" style="display: none; margin-top: 20px;">
+    <h3>My Profile</h3>
+    <div class="profile-info" style="display: flex; align-items: center;">
+      <img src="anika-photo.png" alt="Anika's Photo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-right: 30px;">
+      <div>
+        <p><strong>Name:</strong> Anika Nawar Islam</p>
+        <p><strong>Semester:</strong> 3rd Semester</p>
+        <p><strong>Credits Completed:</strong> 18</p>
+        <p><strong>Current CGPA:</strong> 3.80</p>
+        <p><strong>Phone:</strong> 01759323705</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div id="result" style="display: none; margin-top: 30px;">
+    <h3>My Results</h3>
+
+    <!-- Semester 1 -->
+    <table>
+      <tr>
+        <th>Course No.</th>
+        <th>Course Title</th>
+        <th>Credits Earned</th>
+        <th>Grade</th>
+        <th>Grade Points</th>
+      </tr>
+      <tr class="semester-row"><td colspan="5">Semester: Fall 2024</td></tr>
+      <tr><td>CSE110</td><td>PROGRAMMING LANGUAGE I</td><td>3.00</td><td>A</td><td>4.00</td></tr>
+      <tr><td>ENG101</td><td>FUNDAMENTALS OF ENGLISH</td><td>3.00</td><td>B+</td><td>3.30</td></tr>
+      <tr><td>MAT110</td><td>MATHEMATICS I</td><td>3.00</td><td>A-</td><td>3.70</td></tr>
+      <tr class="semester-row"><td>Semester</td><td>Credits Attempted</td><td>9.00</td><td>9.00</td><td>GPA: 3.70</td></tr>
+      <tr class="semester-row"><td>Cumulative</td><td>Credits Attempted</td><td>9.00</td><td>Credits Earned</td><td>CGPA: 3.70</td></tr>
+    </table>
+
+    <!-- Semester 2 -->
+    <table>
+      <tr>
+        <th>Course No.</th>
+        <th>Course Title</th>
+        <th>Credits Earned</th>
+        <th>Grade</th>
+        <th>Grade Points</th>
+      </tr>
+      <tr class="semester-row"><td colspan="5">Semester: Spring 2025</td></tr>
+      <tr><td>CSE111</td><td>PROGRAMMING LANGUAGE II</td><td>3.00</td><td>A</td><td>4.00</td></tr>
+      <tr><td>CSE230</td><td>DISCRETE MATHEMATICS</td><td>3.00</td><td>A</td><td>4.00</td></tr>
+      <tr><td>STA201</td><td>STATISTICS</td><td>3.00</td><td>A-</td><td>3.70</td></tr>
+      <tr class="semester-row"><td>Semester</td><td>Credits Attempted</td><td>9.00</td><td>9.00</td><td>GPA: 3.90</td></tr>
+      <tr class="semester-row"><td>Cumulative</td><td>Credits Attempted</td><td>18.00</td><td>Credits Earned</td><td>CGPA: 3.80</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  function validateLogin() {
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value.trim();
+    const error = document.getElementById('error');
+
+    if (user === 'anikanawar18' && pass === '24201401') {
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('mainPage').style.display = 'block';
+      showSection('profile');
+      error.textContent = '';
+    } else {
+      error.textContent = 'Invalid credentials. Please try again.';
+    }
+  }
+
+  function showSection(id) {
+    document.getElementById('profile').style.display = 'none';
+    document.getElementById('result').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
